@@ -1,0 +1,399 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.page { padding: 1.5rem 0; }
+.section-title { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin: 2rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 0; }
+.metric-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+.metric-grid-5 { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 10px; }
+.metric-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.85rem 1rem; }
+.metric-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; }
+.metric-value { font-size: 24px; font-weight: 500; color: var(--color-text-primary); }
+.metric-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2px; }
+.metric-value.good { color: #0F6E56; }
+.metric-value.warn { color: #854F0B; }
+.metric-value.mid { color: #185FA5; }
+.chart-wrap { position: relative; width: 100%; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
+.card-title { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+.theme-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+.theme-label { font-size: 12px; color: var(--color-text-primary); min-width: 140px; flex-shrink: 0; }
+.theme-bar-track { flex: 1; height: 6px; background: var(--color-background-secondary); border-radius: 3px; overflow: hidden; }
+.theme-bar-fill { height: 100%; border-radius: 3px; }
+.theme-count { font-size: 11px; color: var(--color-text-tertiary); min-width: 36px; text-align: right; }
+.staff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.staff-item { display: flex; align-items: center; gap: 8px; }
+.staff-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0; }
+.staff-name { font-size: 12px; color: var(--color-text-primary); }
+.staff-mentions { font-size: 11px; color: var(--color-text-tertiary); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 11px; padding: 3px 10px; border-radius: 99px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); }
+.tag.good { background: #E1F5EE; color: #0F6E56; border-color: #9FE1CB; }
+.tag.warn { background: #FAEEDA; color: #854F0B; border-color: #FAC775; }
+.tag.info { background: #E6F1FB; color: #185FA5; border-color: #B5D4F4; }
+.quote { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; padding: 0.6rem 0.75rem; background: var(--color-background-secondary); border-radius: var(--border-radius-md); margin-bottom: 6px; border-left: 2px solid var(--color-border-secondary); }
+.nps-bar { height: 16px; border-radius: 8px; display: flex; overflow: hidden; gap: 2px; margin: 8px 0; }
+.nps-seg { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; font-weight: 500; }
+.scale-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.scale-label { font-size: 12px; color: var(--color-text-primary); min-width: 130px; }
+.scale-dots { display: flex; gap: 3px; align-items: center; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.filled { background: #1D9E75; }
+.dot.half { background: #9FE1CB; }
+.dot.empty { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); }
+.scale-num { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-left: 4px; }
+.improve-tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; background: #FAEEDA; color: #854F0B; border: 0.5px solid #FAC775; }
+.great-tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; background: #E1F5EE; color: #0F6E56; border: 0.5px solid #9FE1CB; }
+</style>
+
+<div class="page">
+
+<div class="section-title">Overall sentiment — 1,039 responses · AI110 · Spring 2026 · Week 3</div>
+<div class="metric-grid">
+  <div class="metric-card">
+    <div class="metric-label">NPS — Recommend CodePath</div>
+    <div class="metric-value good">+47</div>
+    <div class="metric-sub">56% promoters · 9% detractors</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">NPS — Curriculum</div>
+    <div class="metric-value good">+47</div>
+    <div class="metric-sub">57% promoters · 10% detractors</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Plan to take another course</div>
+    <div class="metric-value good">80%</div>
+    <div class="metric-sub">18% unsure · 2.6% no</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Want to work in tech</div>
+    <div class="metric-value good">4.73/5</div>
+    <div class="metric-sub">Highest identity metric</div>
+  </div>
+</div>
+
+<div class="section-title">Quantitative ratings</div>
+<div class="row2">
+  <div class="card">
+    <div class="card-title">Staff, portal & support scores (out of 5)</div>
+    <div class="scale-row">
+      <span class="scale-label">Instructional staff</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot half"></div>
+      </div>
+      <span class="scale-num">4.53</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-label">Portal / Student Hub ease</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot half"></div>
+      </div>
+      <span class="scale-num">4.55</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-label">Expectations clarity</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot half"></div>
+      </div>
+      <span class="scale-num">4.41</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-label">Feeling supported</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot half"></div>
+      </div>
+      <span class="scale-num">4.41</span>
+    </div>
+    <div style="margin-top:10px; font-size:11px; color:var(--color-text-tertiary);">11.7% of students rated support ≤ 3 — worth a follow-up</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Identity & belonging (out of 5)</div>
+    <div class="scale-row">
+      <span class="scale-label">Want to work in tech</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+      </div>
+      <span class="scale-num">4.73</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-label">Sense of belonging</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot half"></div>
+      </div>
+      <span class="scale-num">4.47</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-label">Place in tech for me</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot half"></div>
+      </div>
+      <span class="scale-num">4.46</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-label">Technical confidence</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div>
+      </div>
+      <span class="scale-num">4.08</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-label">Made friends here</span>
+      <div class="scale-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot empty"></div><div class="dot empty"></div>
+      </div>
+      <span class="scale-num">3.32</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">Top improvement themes from open-ended feedback</div>
+<div class="row2">
+  <div class="card">
+    <div class="card-title">Most frequently requested changes</div>
+    <div class="theme-row"><span class="theme-label">Breakout room experience</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:100%;background:#D85A30"></div></div><span class="theme-count">105</span></div>
+    <div class="theme-row"><span class="theme-label">Group collab quality</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:97%;background:#D85A30"></div></div><span class="theme-count">102</span></div>
+    <div class="theme-row"><span class="theme-label">Class timing / EST late nights</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:82%;background:#BA7517"></div></div><span class="theme-count">86</span></div>
+    <div class="theme-row"><span class="theme-label">More time / slower pace</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:61%;background:#BA7517"></div></div><span class="theme-count">64</span></div>
+    <div class="theme-row"><span class="theme-label">Real-world projects / industry</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:61%;background:#378ADD"></div></div><span class="theme-count">64</span></div>
+    <div class="theme-row"><span class="theme-label">Career / networking / jobs</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:59%;background:#378ADD"></div></div><span class="theme-count">62</span></div>
+    <div class="theme-row"><span class="theme-label">More technical depth</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:25%;background:#1D9E75"></div></div><span class="theme-count">26</span></div>
+    <div class="theme-row"><span class="theme-label">More lecture / demos</span><div class="theme-bar-track"><div class="theme-bar-fill" style="width:16%;background:#1D9E75"></div></div><span class="theme-count">17</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title">NPS breakdown</div>
+    <div style="margin-bottom:6px;font-size:12px;color:var(--color-text-secondary);">Recommend CodePath (n=1,039)</div>
+    <div class="nps-bar">
+      <div class="nps-seg" style="width:9%;background:#E24B4A">9%</div>
+      <div class="nps-seg" style="width:34%;background:#888780">34%</div>
+      <div class="nps-seg" style="width:57%;background:#1D9E75">57%</div>
+    </div>
+    <div style="display:flex;gap:16px;margin-bottom:14px;">
+      <span style="font-size:11px;color:#A32D2D">Detractors 9%</span>
+      <span style="font-size:11px;color:#5F5E5A">Passives 34%</span>
+      <span style="font-size:11px;color:#0F6E56">Promoters 57%</span>
+    </div>
+    <div style="margin-bottom:6px;font-size:12px;color:var(--color-text-secondary);">Recommend Curriculum (n=1,039)</div>
+    <div class="nps-bar">
+      <div class="nps-seg" style="width:10%;background:#E24B4A">10%</div>
+      <div class="nps-seg" style="width:33%;background:#888780">33%</div>
+      <div class="nps-seg" style="width:57%;background:#1D9E75">57%</div>
+    </div>
+    <div style="display:flex;gap:16px;margin-bottom:14px;">
+      <span style="font-size:11px;color:#A32D2D">Detractors 10%</span>
+      <span style="font-size:11px;color:#5F5E5A">Passives 33%</span>
+      <span style="font-size:11px;color:#0F6E56">Promoters 57%</span>
+    </div>
+    <div style="margin-top:8px; font-size:11px; color:var(--color-text-tertiary);">+47 NPS is strong for a free academic program. Curriculum and program scores are identical, suggesting students view them as one unified experience.</div>
+  </div>
+</div>
+
+<div class="section-title">For TFMs — what needs attention at the program level</div>
+<div class="card" style="margin-bottom:12px;">
+  <div class="card-title">Key signals + recommended actions</div>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <span class="improve-tag" style="flex-shrink:0;margin-top:2px;">Improve</span>
+      <span style="font-size:13px;color:var(--color-text-primary);">Class timing is hurting East Coast students — 86 mentions. Students in EST are regularly in class until 11 PM. Consider earlier slots or recorded alternatives for those sections.</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <span class="improve-tag" style="flex-shrink:0;margin-top:2px;">Improve</span>
+      <span style="font-size:13px;color:var(--color-text-primary);">Breakout room disengagement is the #1 complaint (105 mentions). Silent rooms, unresponsive peers, and no TF presence are common. Ideas from students: stable groups, TF presence throughout, smaller room sizes (2–3 people), pre-formed groups.</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <span class="improve-tag" style="flex-shrink:0;margin-top:2px;">Improve</span>
+      <span style="font-size:13px;color:var(--color-text-primary);">11.7% of students (122) rated their support feeling ≤ 3/5. Proactively reach out to students who feel unsupported — especially those who haven't attended office hours or study halls.</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <span class="improve-tag" style="flex-shrink:0;margin-top:2px;">Improve</span>
+      <span style="font-size:13px;color:var(--color-text-primary);">"Made friends" scored the lowest identity metric at 3.32/5. Students want deeper peer connections beyond random breakout groups. Persistent groups or community channels could help.</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <span class="great-tag" style="flex-shrink:0;margin-top:2px;">Great</span>
+      <span style="font-size:13px;color:var(--color-text-primary);">80% plan to take another CodePath course. This retention signal is excellent for a Week 3 check-in and confirms the program is landing well overall.</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <span class="great-tag" style="flex-shrink:0;margin-top:2px;">Great</span>
+      <span style="font-size:13px;color:var(--color-text-primary);">Belonging (4.47), Place in Tech (4.46), and Want to Work in Tech (4.73) are all very high — the program is clearly reinforcing mission-aligned identity outcomes.</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">For TFs / Tech Fellows — what students are saying about you</div>
+<div class="row2">
+  <div class="card">
+    <div class="card-title">Most mentioned in shout-outs</div>
+    <div class="staff-grid">
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#E1F5EE;color:#0F6E56;">JS</div>
+        <div><div class="staff-name">Jason</div><div class="staff-mentions">73 shout-outs</div></div>
+      </div>
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#E6F1FB;color:#185FA5;">LP</div>
+        <div><div class="staff-name">Leslie (Pajuelo)</div><div class="staff-mentions">55 shout-outs</div></div>
+      </div>
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#FAEEDA;color:#854F0B;">JN</div>
+        <div><div class="staff-name">Jean</div><div class="staff-mentions">32 shout-outs</div></div>
+      </div>
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#EEEDFE;color:#534AB7;">FN</div>
+        <div><div class="staff-name">Fred Ngo</div><div class="staff-mentions">19 shout-outs</div></div>
+      </div>
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#FAECE7;color:#993C1D;">MM</div>
+        <div><div class="staff-name">Mikiann McIntosh</div><div class="staff-mentions">6 shout-outs</div></div>
+      </div>
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#E1F5EE;color:#0F6E56;">TP</div>
+        <div><div class="staff-name">Topu</div><div class="staff-mentions">4 shout-outs</div></div>
+      </div>
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#FAEEDA;color:#854F0B;">AN</div>
+        <div><div class="staff-name">Angelo</div><div class="staff-mentions">4 shout-outs</div></div>
+      </div>
+      <div class="staff-item">
+        <div class="staff-avatar" style="background:#E6F1FB;color:#185FA5;">JK</div>
+        <div><div class="staff-name">Jack</div><div class="staff-mentions">2 shout-outs</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">What's working well with staff</div>
+    <div class="tag-list" style="margin-bottom:10px;">
+      <span class="tag good">Responsive on Slack</span>
+      <span class="tag good">Friendly + welcoming</span>
+      <span class="tag good">Drops into breakout rooms</span>
+      <span class="tag good">Good analogies + pacing</span>
+      <span class="tag good">Answers questions quickly</span>
+      <span class="tag good">Check-ins during class</span>
+    </div>
+    <div class="card-title">What TFs should do more of</div>
+    <div class="tag-list">
+      <span class="tag warn">Stay in breakout rooms longer</span>
+      <span class="tag warn">Guide collaboration in groups</span>
+      <span class="tag warn">Real-world scenario examples</span>
+      <span class="tag warn">More coding demos</span>
+      <span class="tag warn">Prompt participation in quiet groups</span>
+    </div>
+    <div style="margin-top:10px; font-size:11px; color:var(--color-text-tertiary);">One student noted a negative experience with a staff member being dismissive — worth reviewing Slack/email logs for that section.</div>
+  </div>
+</div>
+
+<div class="section-title">For instructors — curriculum & content signals</div>
+<div class="row2">
+  <div class="card">
+    <div class="card-title">What's landing well</div>
+    <div class="tag-list" style="margin-bottom:10px;">
+      <span class="tag good">Hands-on labs & tinker sessions</span>
+      <span class="tag good">Live coding demos</span>
+      <span class="tag good">Well-structured lecture slides</span>
+      <span class="tag good">Accessible to beginners</span>
+      <span class="tag good">Free Claude Code access</span>
+      <span class="tag good">Practical prompting skills</span>
+      <span class="tag good">Week-long submission windows</span>
+      <span class="tag good">Group pair programming</span>
+    </div>
+    <div class="card-title">What needs improvement</div>
+    <div class="tag-list">
+      <span class="tag warn">Tinker labs too long for 1 hr</span>
+      <span class="tag warn">Unclear assignment instructions</span>
+      <span class="tag warn">Lecture pace sometimes too fast</span>
+      <span class="tag warn">Tool setup friction (VS Code, agents)</span>
+      <span class="tag warn">Lab ≠ project alignment confusing</span>
+      <span class="tag warn">Slides cover material too briefly</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">AI content — what students want more of</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div class="quote">"Show how current companies are actually using it — like an interactive session of a current engineer working with Claude Code."</div>
+      <div class="quote">"More hands-on, real-world projects that mirror industry workflows — data preprocessing, deployment, performance monitoring."</div>
+      <div class="quote">"I thought the course would show how AI works (NLP, LLMs) — more theory on how it actually works under the hood."</div>
+      <div class="quote">"Prompt engineering coursework should be included — it's an important skill in today's time."</div>
+      <div class="quote">"Going deeper into LangChain, LangGraph, agents, RAG, vector DBs — practical exposure to fundamental AI engineering skills."</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">For course design — activities & projects</div>
+<div class="card" style="margin-bottom:12px;">
+  <div class="card-title">Breakout rooms / tinker labs — the core tension</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+    <span class="great-tag">Students love the concept</span>
+    <span class="improve-tag">Execution needs refinement</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <div>
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px;">Positives from students</div>
+      <div class="quote">"Working problems in groups has been very helpful."</div>
+      <div class="quote">"Breakout rooms are fun and the problem solving component is great."</div>
+      <div class="quote">"It's fun, interactive, and makes me feel like I'm learning."</div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px;">Pain points to fix</div>
+      <div class="quote">"Groups only get through Part 1 of 4 in the allotted time — tinkers are too long."</div>
+      <div class="quote">"Some groups are silent and no one wants to screen share."</div>
+      <div class="quote">"Instructions in breakout rooms are sometimes confusing."</div>
+    </div>
+  </div>
+  <div style="margin-top:10px;">
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px;">Recurring improvement ideas from students</div>
+    <div class="tag-list">
+      <span class="tag info">Stable groups for the semester</span>
+      <span class="tag info">TF in room the full session</span>
+      <span class="tag info">Smaller groups (2–3 people)</span>
+      <span class="tag info">Scope tinkers to 1-hour slot</span>
+      <span class="tag info">Example outputs shown before starting</span>
+      <span class="tag info">Option to switch low-engagement rooms</span>
+    </div>
+  </div>
+</div>
+
+<div class="row2">
+  <div class="card">
+    <div class="card-title">What students are most proud of (week 3)</div>
+    <div class="tag-list">
+      <span class="tag good">Completing labs independently</span>
+      <span class="tag good">Building their first website</span>
+      <span class="tag good">Learning AI prompting skills</span>
+      <span class="tag good">Using Claude Code in VS Code</span>
+      <span class="tag good">Coming out of their shell</span>
+      <span class="tag good">Understanding HTML/CSS</span>
+      <span class="tag good">Teaching peers in groups</span>
+      <span class="tag good">Learning from scratch</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Portal / Student Hub feedback</div>
+    <div style="margin-bottom:8px;font-size:13px;color:var(--color-text-primary);">Rated <strong style="font-weight:500;">4.55/5</strong> — the highest-rated element in the survey.</div>
+    <div class="tag-list" style="margin-bottom:10px;">
+      <span class="tag good">Easy to navigate</span>
+      <span class="tag good">Assignments clearly structured</span>
+      <span class="tag good">Good access to recordings</span>
+    </div>
+    <div class="card-title">Requested additions</div>
+    <div class="tag-list">
+      <span class="tag warn">Dark mode</span>
+      <span class="tag warn">Back button to hub</span>
+      <span class="tag warn">Calendar feed / iCal export</span>
+      <span class="tag warn">Clearer submit button</span>
+      <span class="tag warn">More links + slides on portal</span>
+      <span class="tag warn">Study hall schedule visibility</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">Summary — TL;DR for leadership</div>
+<div class="card">
+  <div style="display:flex;flex-direction:column;gap:7px;">
+    <div style="display:flex;gap:8px;align-items:flex-start;"><span class="great-tag" style="flex-shrink:0;margin-top:2px;">Great</span><span style="font-size:13px;color:var(--color-text-primary);">NPS of +47, 80% planning to return, and strong belonging/identity scores signal a healthy program. Staff responsiveness and lecture quality are standout strengths.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;"><span class="great-tag" style="flex-shrink:0;margin-top:2px;">Great</span><span style="font-size:13px;color:var(--color-text-primary);">The CodePath × Anthropic partnership (free Claude Code Pro) is genuinely exciting students and mentioned unprompted in dozens of responses.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;"><span class="improve-tag" style="flex-shrink:0;margin-top:2px;">Improve</span><span style="font-size:13px;color:var(--color-text-primary);">Breakout room engagement is the top friction point at scale. Redesigning tinker scope + group stability would address the single largest cluster of complaints.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;"><span class="improve-tag" style="flex-shrink:0;margin-top:2px;">Improve</span><span style="font-size:13px;color:var(--color-text-primary);">East Coast timing and "Made Friends" (3.32/5) are structural issues — earlier section options and persistent peer groups could meaningfully improve both.</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;"><span class="improve-tag" style="flex-shrink:0;margin-top:2px;">Improve</span><span style="font-size:13px;color:var(--color-text-primary);">A vocal subset (advanced students) want more technical depth — LangChain, agents, RAG, real-world engineering workflows. Worth considering a stretch track or optional advanced content.</span></div>
+  </div>
+</div>
+
+</div>
